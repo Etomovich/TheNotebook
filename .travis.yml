@@ -9,8 +9,7 @@ before_script:
   - export PYTHONPATH=`pwd`
 # command to run tests
 script: 
-  - python note_tests.py
-  - unittest --with-coverage
+  - coverage run note_tests.py
 after_success:
   - coverallslanguage: python
   - coveralls
