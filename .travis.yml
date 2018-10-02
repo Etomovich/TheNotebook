@@ -9,7 +9,7 @@ before_script:
   - export PYTHONPATH=`pwd`
 # command to run tests
 script: 
-  - coverage run note_tests.py
+  - nosetests note_tests.py --with-coverage
 after_success:
   - coverallslanguage: python
   - coveralls
