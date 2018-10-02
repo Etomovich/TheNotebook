@@ -10,6 +10,7 @@ before_script:
 # command to run tests
 script: 
   - python note_tests.py
+  - unittest --with-coverage
 after_success:
   - coverallslanguage: python
   - coveralls
