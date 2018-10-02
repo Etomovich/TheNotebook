@@ -8,7 +8,7 @@ install:
 before_script:
   - export PYTHONPATH=`pwd`
 # command to run tests
-script: "nosetests note_test.py --with-coverage --cover-package=note_test"
+script: " nosetests note_tests.py -v — with-coverage"
 after_success:
 - coverallslanguage: python
 - coveralls
