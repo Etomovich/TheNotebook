@@ -11,15 +11,4 @@ before_script:
 script: "nosetests note_test.py --with-coverage --cover-package=note_test"
 after_success:
 - coverallslanguage: python
-python:
-  - "2.7"
-# command to install dependencies
-install:
-  - pip install -r requirements.txt
-  - pip install coveralls
-before_script:
-  - export PYTHONPATH=`pwd`
-# command to run tests
-script: "nosetests note_test.py --with-coverage=note_test"
-after_success:
 - coveralls
