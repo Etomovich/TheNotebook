@@ -1,0 +1,11 @@
+[run]
+
+omit =
+   *venv*
+   *migrations*
+   *tests*
+
+branch = True
+
+[report]
+show_missing = True
