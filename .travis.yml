@@ -1,15 +1,30 @@
 language: python
 python:
-  - "2.7"
+  - "3.6"
+
+env:
+  - CC_TEST_REPORTER_ID=f12bfb67b64a2488e9a589843a6b480c1827c6d1e02a4da2a9a0aa378048f5f6
+
 # command to install dependencies
 install:
   - pip install -r requirements.txt
   - pip install coveralls
+  - pip install coverage
+
 before_script:
   - export PYTHONPATH=`pwd`
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 # command to run tests
 script: 
-  - nosetests note_app/tests --with-coverage --cover-package=note_app
+  - nosetests note_app/tests --with-coverage --cover-xml --cover-erase --cover-package=note_app 
+
+after_script:
+  - coverage xml
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
 after_success:
   - coverallslanguage: python
   - coveralls
