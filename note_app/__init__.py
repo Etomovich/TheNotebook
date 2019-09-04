@@ -1,11 +1,13 @@
 '''makes note_app a module'''
+import os
 from flask import Flask
-from config import Config
+from instance.config import config_classes
 
 
-def create_app(config_class=Config):
+def create_app():
     '''This method creates the flask instance and returns it.'''
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    flask_environment = os.environ.get("BASE_ENVIRONMENT")
+    app.config.from_object(config_classes[flask_environment])
 
     return app
